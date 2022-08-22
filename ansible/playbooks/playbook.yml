@@ -1,4 +1,8 @@
 ---
-- hosts: ubuntu@ec2-54-211-93-115.compute-1.amazonaws.com
-  roles: 
-    - pull-image
+- hosts: server1
+  tasks:
+    - name: Pull an image
+      community.docker.docker_image:
+        name: boldusov/sample:lesson
+        source: pull 
+      become: true
