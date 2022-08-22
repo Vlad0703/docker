@@ -6,3 +6,11 @@
         name: boldusov/sample:lesson
         source: pull 
       become: true
+    
+    - name: create container
+      docker_container:
+        name: myredis
+        image: boldusov/sample:lesson
+        ports:
+          - "80:80"
+      become: true
