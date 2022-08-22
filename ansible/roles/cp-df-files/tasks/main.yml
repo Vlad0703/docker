@@ -1,0 +1,33 @@
+- name: create docker directory
+  file:
+    path: /home/vagrant/docker
+    state: directory
+
+# - name: copy files
+#   copy:
+#     src: df
+#     dest: /home/vagrant/docker
+
+
+# - name: build image
+#   docker_image:
+#     name: 'lesson'
+#     build: 
+#       dockerfile: /home/vagrant/docker/df/Dockerfile
+#       path: /
+#     source: build
+
+# - name: build container image
+#   docker_image:
+#     name: democontainer:v1.0
+#     build:
+#       path: /home/vagrant/docker/df
+#     source: build
+#     state: present
+
+- name: create container
+  docker_container:
+    name: myredis
+    image: democontainer:v1.0
+    ports:
+      - "80:80"

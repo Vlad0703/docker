@@ -1,0 +1,10 @@
+# - name: install docker
+#   apt: 
+#     update_cache: yes
+#     name: docker
+#     state: present
+
+# - name: install docker
+#   apt: 
+#     name: python3
+#     state: present

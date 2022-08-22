@@ -1,0 +1,4 @@
+---
+- hosts: ubuntu@ec2-54-211-93-115.compute-1.amazonaws.com
+  roles: 
+    - pull-image
