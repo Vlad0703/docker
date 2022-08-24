@@ -10,7 +10,7 @@
     - name: create container
       docker_container:
         name: myredis
-        image: 'boldusov/sample:{{ build }}''
+        image: 'boldusov/sample:{{ build }}'
         ports:
           - "80:80"
       become: true
