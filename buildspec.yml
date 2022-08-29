@@ -10,7 +10,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...          
-      - docker build -t docker-pipeline files/df
+      - docker build -t docker-pipeline ./files/df
       - docker tag docker-pipeline:latest 322977037187.dkr.ecr.us-east-1.amazonaws.com/docker-pipeline:latest
   post_build:
     commands:
