@@ -2,6 +2,7 @@ version: 0.2
 phases:
   pre_build:
     commands:
+      - $(aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/p5f6n0i8)
       - REPOSITORY_URI=public.ecr.aws/p5f6n0i8/lesson14-df
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION)
       - IMAGE_TAG=${COMMIT_HASH:=latest}
@@ -9,14 +10,13 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...          
-      - docker build -t $REPOSITORY_URI:latest files/df
-      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+      - docker build -t lesson14-df files/df
+      - docker tag lesson14-df:latest public.ecr.aws/p5f6n0i8/lesson14-df:latest
   post_build:
     commands:
       - echo Build completed
       - echo Pushing the Docker images...
-      - docker push $REPOSITORY_URI:latest
-      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - docker push public.ecr.aws/p5f6n0i8/lesson14-df:latest
       - echo Writing definitions file...
       - printf '[{"name":"project-container","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > taskdefinition.json
 artifacts:
