@@ -18,6 +18,6 @@ phases:
       - echo Pushing the Docker images...
       - docker push 322977037187.dkr.ecr.us-east-1.amazonaws.com/docker-pipeline:latest
       - echo Writing definitions file...
-      - printf '[{"name":"project-container","imageUri":"%s"}]' 322977037187.dkr.ecr.us-east-1.amazonaws.com/docker-pipeline:latest > taskdefinition.json
+      - printf '[{"name":"project-container","imageUri":"%s"}]' 322977037187.dkr.ecr.us-east-1.amazonaws.com/docker-pipeline:latest > $CODEBUILD_SRC_DIR/taskdefinition.json
 artifacts:
     files: imagedefinitions.json
