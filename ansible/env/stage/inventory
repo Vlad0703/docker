@@ -1,2 +1,2 @@
-server1 ansible_host=ubuntu@54.211.93.115
+server1 ansible_host=ubuntu@3.84.36.112 
 
